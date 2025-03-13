@@ -1,16 +1,17 @@
 const express = require('express');
-
 const app = express();
-const PORT = process.env.PORT || 5120;
 
-// Define a simple route
+// Define your endpoint
 app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Export app separately for testing
+if (require.main === module) {
+  const PORT = 5120;
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
 
-module.exports = app; // Export for testing
+module.exports = app; // Export app for testing

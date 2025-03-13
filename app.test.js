@@ -1,6 +1,15 @@
-const { describe, it, expect } = require('@jest/globals');
 const request = require('supertest');
-const app = require('./index'); // Assuming your Express app is in app.js
+const app = require('./index');
+
+let server;
+
+beforeAll((done) => {
+  server = app.listen(5120, done); // Start the server before tests
+});
+
+afterAll((done) => {
+  server.close(done); // Close the server after tests
+});
 
 describe('GET /', () => {
   it('should return Hello, World!', async () => {
