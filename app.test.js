@@ -1,3 +1,4 @@
+const { describe, it, expect } = require('@jest/globals');
 const request = require('supertest');
 const app = require('./index'); // Assuming your Express app is in app.js
 
